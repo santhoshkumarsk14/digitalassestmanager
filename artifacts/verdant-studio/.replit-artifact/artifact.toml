@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Verdant Studio"
+description = "A premium landscaping and construction website for Verdant Studio, showcasing landscape architecture, construction services, selected projects, certifications, client feedback, and a working quote request flow."
+version = "1.0.0"
+id = "artifacts/verdant-studio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25911
+
+[services.development]
+run = "pnpm --filter @workspace/verdant-studio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/verdant-studio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/verdant-studio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25911"
+BASE_PATH = "/"

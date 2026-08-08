@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: 48 25% 86%;
+  --foreground: 157 39% 15%;
+  --card: 48 25% 90%;
+  --card-foreground: 157 39% 15%;
+  --border: 157 22% 30%;
+  --input: 44 20% 70%;
+  --ring: 21 52% 52%;
+  --primary: 157 39% 15%;
+  --primary-foreground: 48 25% 86%;
+  --secondary: 37 23% 72%;
+  --secondary-foreground: 157 39% 15%;
+  --muted: 40 18% 77%;
+  --muted-foreground: 166 10% 30%;
+  --accent: 21 52% 52%;
+  --accent-foreground: 157 39% 15%;
+  --destructive: 4 60% 40%;
+  --destructive-foreground: 48 25% 92%;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Fraunces', serif;
+  --app-font-mono: 'IBM Plex Mono', monospace;
+  --radius: 0.125rem;
+}
+
+.dark {
+  --background: 157 39% 15%;
+  --foreground: 48 25% 86%;
+  --card: 160 24% 19%;
+  --card-foreground: 48 25% 86%;
+  --border: 42 20% 66%;
+  --input: 160 18% 28%;
+  --ring: 21 52% 52%;
+  --primary: 48 25% 86%;
+  --primary-foreground: 157 39% 15%;
+  --secondary: 166 10% 30%;
+  --secondary-foreground: 48 25% 86%;
+  --muted: 166 10% 30%;
+  --muted-foreground: 40 18% 77%;
+  --accent: 21 52% 52%;
+  --accent-foreground: 157 39% 15%;
+  --destructive: 4 60% 45%;
+  --destructive-foreground: 48 25% 92%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans antialiased bg-background text-foreground; margin: 0; }
+  :focus-visible { outline: 2px solid #C47B47; outline-offset: 3px; }
+}
+
+@layer utilities {
+  .display { font-family: var(--app-font-serif); font-weight: 500; letter-spacing: -0.045em; }
+  .mono { font-family: var(--app-font-mono); letter-spacing: .08em; text-transform: uppercase; font-size: 10px; }
+  .plan-grid { background-image: linear-gradient(rgba(231,227,212,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(231,227,212,.12) 1px, transparent 1px); background-size: 32px 32px; }
+  .contours { background-image: repeating-radial-gradient(ellipse at 30% 40%, transparent 0 34px, rgba(24,53,43,.13) 35px 36px, transparent 37px 66px); }
+}
+
+.verdant { --moss:#18352B; --slate:#3D4A48; --wash:#E7E3D4; --sand:#C8BFA8; --timber:#795E48; --amber:#C47B47; }
+.reveal { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

@@ -1,0 +1,59 @@
+THE PROMPT
+
+You are the design lead at a boutique digital studio known for giving every client a visual identity that could not be mistaken for anyone else's. Build a premium, modern website for a landscaping and construction company. Reject generic template aesthetics — no stock "green gradient + white card" corporate landscaping look. This needs to feel like a $50k design agency build, not a WordPress theme.
+
+1. Business Context (adapt names/details as needed)
+Company: A landscaping, garden design & construction contractor operating in [CITY/COUNTRY].
+Services: Landscape master planning, landscape design & installation, landscape maintenance, artificial grass & garden lighting, tree pruning & removal, aquatic gardens/ponds/waterfalls, auto irrigation installation, vertical green walls, hardscape/construction work.
+Audience: Property developers, facility/estate managers, condo management corporations, corporate campuses, and high-end homeowners — a mix of B2B tender-driven clients and B2C direct clients.
+Trust signals to design around: government/industry registrations and certifications (e.g., landscaping authority registration, building authority registration, certified arborist status, safety management certification, industry association membership). These must feel authoritative, not like an afterthought row of logos.
+Primary goals: (1) generate quote requests, (2) showcase project portfolio quality, (3) establish credibility for tender/RFP consideration.
+2. Design Direction — Avoid the AI-Generated Defaults
+
+Do NOT default to any of these overused patterns: warm cream background with terracotta accent; near-black background with a single neon-green accent; broadsheet newspaper layout with hairline rules. Instead, derive the palette and type from the actual subject: cultivated nature, horticultural craft, and hard landscaping materials (stone, timber, water, foliage).
+
+Before writing any code, produce a short design plan and commit to it:
+
+Palette — name 5-6 exact hex values pulled from real landscape materials, not generic "green 
+#4CAF50." Think: deep moss/forest tones, wet stone grey, sun-bleached limewash, a single unexpected accent (e.g., a warm terracotta planter clay, or a koi-pond amber) used sparingly as the signature color.
+Typography — pair a characterful display serif or humanist sans with real personality (something that feels crafted, not corporate-default like Inter/Roboto alone) against a clean, highly legible body face. Consider a botanical/technical mono for labels, plant names, or specs.
+Layout concept — sketch it in ASCII/prose before building. Consider an asymmetric grid inspired by garden planning plans/blueprints rather than centered stacked sections.
+Signature element — pick ONE memorable, ownable visual moment the whole site is built around. Strong candidates for this subject:
+A live/animated "growth" scroll interaction — elements unfurl, grow, or bloom into place as the user scrolls (not generic fade-ins).
+A blueprint/site-plan motif — the hero or section dividers rendered like landscape architect drawings (contour lines, plant symbols, dimension markers) that resolve into real photography.
+An interactive before/after or seasonal transformation slider showing a real project transition.
+A textured, tactile "material palette" strip (stone/timber/turf swatches) used as a recurring navigational or decorative device tied to real service categories.
+
+Choose one, justify it in one sentence, and use it deliberately rather than scattering effects everywhere.
+
+3. Required Pages & Structure
+
+Homepage
+
+Hero: not a generic slider — a single powerful statement (headline + one striking image/video/interactive moment) that states what the company does and for whom, with one primary CTA ("Get a Quote") and one secondary ("View Our Work").
+Value proposition band: 3-4 differentiators, each earning its place with a specific claim (not "highest quality" — use real specifics like years of combined experience, safety record, certifications count).
+Services overview: all 9 service categories, each linking to its own page, presented as a browsable/filterable grid or interactive map rather than a plain icon list.
+Featured projects: a real portfolio gallery (filterable by category: Landscape, Green Wall, Planting, Tree Pruning, Grass Cutting, Indoor Plants, Turfing, Artificial Turf, Construction, Maintenance) with lightbox/full gallery view.
+Certifications & trust band: registrations/certifications displayed as a credibility section with brief context on why each matters to the client (not just a logo strip).
+Testimonials/client feedback: pull actual quotes, ratings, or case-study snippets onto the homepage — do not bury behind a separate page only.
+Process/how it works: a short 3-5 step visual of what happens after someone requests a quote (site visit → proposal → installation → maintenance) — this reduces friction for first-time enquirers.
+Final CTA band + footer with full contact details, service links, certifications, social proof.
+
+Secondary pages: About Us (team, history, mission), individual Service pages (one per service, each with its own hero, process detail, and relevant project examples), Our Projects (full filterable gallery), Client Feedback (full testimonials/reviews page, ideally with a review-platform integration), Get a Quote (a real multi-step form — not a plain contact form: ask service type, property type, timeline, budget range, upload site photos), Contact Us (map, office details, phone/email, business hours).
+
+4. Content & Copy Instructions
+
+Write from the client's side of the screen: describe outcomes ("a garden that thrives year-round"), not internal process. Avoid generic filler like "we build your dreams" — write specific, concrete copy tied to real service value (e.g., irrigation systems reduce water waste and manual watering; ISA-certified arborists protect tree health and property safety during pruning). Every CTA button uses an active, specific verb ("Request a Site Visit," "See This Project," "Get Your Free Quote") — never bare "Submit" or "Click Here."
+
+5. Technical & UX Requirements
+Fully responsive, mobile-first — the majority of quote requests will come from mobile.
+Fast-loading: optimize/lazy-load all imagery (this is a visually heavy, portfolio-driven site).
+Accessible: visible keyboard focus states, proper alt text on all project images (also helps SEO), respects prefers-reduced-motion.
+SEO-structured: semantic headings, individual metadata per service page, local business schema markup (NAP — name/address/phone consistency), and a blog/resources section for long-tail local search ("landscaping cost guide," "best plants for [climate/region]," "how to maintain a green wall").
+Real, working lead-capture: quote form should validate inputs and confirm submission clearly; include click-to-call and click-to-email links.
+Build in whatever your target stack is (e.g., React/Next.js + Tailwind, or plain HTML/CSS/JS) — [SPECIFY YOUR STACK HERE].
+6. Process to Follow
+Propose the design plan (palette, type, layout, signature element) and briefly justify why it fits a landscaping/construction brand — before writing code.
+Build the homepage first as the flagship, then service page template, then remaining pages.
+Self-critique against generic-AI-design tells before finalizing: if any section could be dropped into an unrelated business's site unchanged, revise it.
+Ensure the one signature element is genuinely distinctive and everything else stays disciplined and quiet around it.

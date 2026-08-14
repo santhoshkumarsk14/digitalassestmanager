@@ -3,10 +3,13 @@ backend:
   branch: main
 
 # This site lives inside a pnpm monorepo, in artifacts/landscape-site.
-# Netlify's "Base directory" must be set to artifacts/landscape-site so
-# these repo-relative content paths resolve correctly.
+# Netlify's "Base directory" build setting does NOT affect the Git Gateway
+# backend below — it commits via the GitHub API using paths relative to the
+# REPO ROOT, always. Every folder/file path here must include the
+# artifacts/landscape-site/ prefix, or content gets committed one level too
+# high and never reaches the actual site.
 
-media_folder: "public/images"
+media_folder: "artifacts/landscape-site/public/images"
 public_folder: "/images"
 
 site_url: https://landscape-site.example.com
@@ -19,7 +22,7 @@ collections:
     files:
       - name: "theme"
         label: "Site Theme"
-        file: "src/data/theme.json"
+        file: "artifacts/landscape-site/src/data/theme.json"
         fields:
           - { label: "Site Name", name: "siteName", widget: "string" }
           - { label: "Tagline", name: "tagline", widget: "text" }
@@ -43,7 +46,7 @@ collections:
 
   - name: "projects"
     label: "Projects"
-    folder: "src/content/projects"
+    folder: "artifacts/landscape-site/src/content/projects"
     create: true
     slug: "{{slug}}"
     extension: "json"
@@ -76,7 +79,7 @@ collections:
 
   - name: "testimonials"
     label: "Client Feedback"
-    folder: "src/content/testimonials"
+    folder: "artifacts/landscape-site/src/content/testimonials"
     create: true
     slug: "{{slug}}"
     extension: "json"

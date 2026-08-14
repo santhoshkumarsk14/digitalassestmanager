@@ -1,0 +1,58 @@
+---
+import theme from '@/data/theme.json';
+import SiteNav from '@/components/SiteNav';
+import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = `${title} | ${theme.siteName}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <style define:vars={{
+      themePrimary: theme.primaryColor,
+      themeSecondary: theme.secondaryColor,
+      themeAccent: theme.accentColor,
+      themeSurface: theme.surfaceColor,
+      themeInk: theme.inkColor,
+      themeFontDisplay: theme.fontDisplay,
+      themeFontBody: theme.fontBody,
+    }}>
+      :root {
+        --theme-primary: var(--themePrimary);
+        --theme-secondary: var(--themeSecondary);
+        --theme-accent: var(--themeAccent);
+        --theme-surface: var(--themeSurface);
+        --theme-ink: var(--themeInk);
+        --theme-font-display: var(--themeFontDisplay);
+        --theme-font-body: var(--themeFontBody);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-surface">
+      Skip to content
+    </a>
+    <SiteNav client:load siteName={theme.siteName} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script src="@/scripts/reveal.client.ts"></script>
+  </body>
+</html>

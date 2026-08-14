@@ -1,0 +1,15 @@
+{
+  "siteName": "Greenline Landscapes",
+  "tagline": "Landscape design, build and maintenance for developers, estates and homeowners.",
+  "primaryColor": "#1F4D2C",
+  "secondaryColor": "#3E6B4F",
+  "accentColor": "#C98A3B",
+  "surfaceColor": "#F4F1E8",
+  "inkColor": "#16281B",
+  "fontDisplay": "'Fraunces', serif",
+  "fontBody": "'Inter', sans-serif",
+  "heroImage": "/images/hero-placeholder.svg",
+  "phone": "+65 6123 4567",
+  "email": "hello@greenline.sg",
+  "address": "21 Landscape Way, Singapore 348123"
+}

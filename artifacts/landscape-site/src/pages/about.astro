@@ -1,0 +1,76 @@
+---
+import { Check } from 'lucide-react';
+import Layout from '@/layouts/Layout.astro';
+import theme from '@/data/theme.json';
+import { certifications, differentiators } from '@/data/site-content';
+---
+
+<Layout
+  title="About Us"
+  description={`Learn about ${theme.siteName} — our team, our history and how we approach landscape design and build work.`}
+>
+  <section class="bg-primary text-surface">
+    <div class="mx-auto max-w-4xl px-6 py-24" data-reveal-group>
+      <p data-reveal class="font-semibold uppercase tracking-widest text-accent">About us</p>
+      <h1 data-reveal class="font-display mt-3 text-4xl leading-tight md:text-5xl">
+        Built by people who stay past the planting day.
+      </h1>
+      <p data-reveal class="mt-6 max-w-2xl text-lg text-surface/85">
+        {theme.siteName} started as a small design-build crew and grew into a full-service landscape
+        contractor without losing the habit of walking every site ourselves before we draw anything.
+        We plan, build and maintain — the same team, start to finish.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <div class="grid gap-12 md:grid-cols-2" data-reveal-group>
+      <div data-reveal>
+        <h2 class="font-display text-3xl text-ink">Our history</h2>
+        <p class="mt-4 leading-7 text-ink/70">
+          We began with residential garden design and grew into estate, campus and developer-scale work
+          as clients asked us to take on more of the build and the aftercare, not just the plan. That
+          pattern shaped how we're structured today: design, build and maintenance sit under one roof so
+          nothing gets lost in a handover between contractors.
+        </p>
+      </div>
+      <div data-reveal>
+        <h2 class="font-display text-3xl text-ink">Our mission</h2>
+        <p class="mt-4 leading-7 text-ink/70">
+          A landscape is a living system, not a fixed asset — it should look better in year five than it
+          did on hand-over day. Everything we do, from species selection to maintenance scheduling, is
+          decided against that standard.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-secondary/10">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <h2 class="font-display text-3xl text-ink md:text-4xl">Why clients bring us tenders</h2>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2" data-reveal-group>
+        {differentiators.map((item) => (
+          <div data-reveal class="rounded-xl border border-ink/10 bg-white p-5">
+            <p class="font-display text-xl text-primary">{item.title}</p>
+            <p class="mt-2 text-sm leading-6 text-ink/65">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <h2 class="font-display text-3xl text-ink md:text-4xl">Registrations &amp; certifications</h2>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2" data-reveal-group>
+      {certifications.map((cert) => (
+        <div data-reveal class="flex gap-4 rounded-xl border border-ink/10 bg-white p-5">
+          <Check className="mt-0.5 shrink-0 text-accent" size={20} />
+          <div>
+            <p class="font-semibold text-ink">{cert.name}</p>
+            <p class="mt-1 text-sm leading-6 text-ink/65">{cert.context}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

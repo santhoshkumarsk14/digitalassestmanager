@@ -1,0 +1,24 @@
+---
+import { Star } from 'lucide-react';
+
+interface Props {
+  name: string;
+  role: string;
+  quote: string;
+  rating: number;
+}
+
+const { name, role, quote, rating } = Astro.props;
+---
+
+<figure class="rounded-2xl border border-ink/10 bg-white p-6" data-reveal>
+  <div class="flex gap-1 text-accent" aria-hidden="true">
+    {Array.from({ length: 5 }).map((_, index) => (
+      <Star size={16} fill={index < rating ? 'currentColor' : 'none'} strokeWidth={1.5} />
+    ))}
+  </div>
+  <blockquote class="font-display mt-4 text-lg leading-snug text-ink">&ldquo;{quote}&rdquo;</blockquote>
+  <figcaption class="mt-4 text-sm text-ink/60">
+    <span class="font-semibold text-ink">{name}</span> &middot; {role}
+  </figcaption>
+</figure>

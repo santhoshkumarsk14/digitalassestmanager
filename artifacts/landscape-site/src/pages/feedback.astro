@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
+import theme from '@/data/theme.json';
+
+const testimonials = (await getCollection('testimonials')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Client Feedback"
+  description={`Read what clients say about working with ${theme.siteName}.`}
+>
+  <section class="bg-primary text-surface">
+    <div class="mx-auto max-w-4xl px-6 py-24" data-reveal-group>
+      <p data-reveal class="font-semibold uppercase tracking-widest text-accent">Client feedback</p>
+      <h1 data-reveal class="font-display mt-3 text-4xl leading-tight md:text-5xl">
+        What it's like on the other side of the site visit.
+      </h1>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-6 md:grid-cols-2" data-reveal-group>
+      {testimonials.map((testimonial) => (
+        <TestimonialCard
+          name={testimonial.data.name}
+          role={testimonial.data.role}
+          quote={testimonial.data.quote}
+          rating={testimonial.data.rating}
+        />
+      ))}
+    </div>
+
+    {testimonials.length === 0 && (
+      <p class="text-sm text-ink/60">No client feedback published yet.</p>
+    )}
+
+    <div class="mt-16 rounded-2xl border border-ink/10 bg-secondary/10 p-8 text-center">
+      <p class="font-display text-2xl text-ink">Worked with us recently?</p>
+      <p class="mt-2 text-sm text-ink/65">We'd genuinely like to hear how the project went.</p>
+      <a
+        href="/contact"
+        class="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-surface transition hover:bg-secondary"
+      >
+        Leave feedback
+      </a>
+    </div>
+  </section>
+</Layout>

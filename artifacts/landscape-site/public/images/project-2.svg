@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Atrium Living Wall placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2C5936"/>
+      <stop offset="100%" stop-color="#4C7A4E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <g fill="#F4F1E8" opacity="0.9" font-family="sans-serif">
+    <text x="60" y="740" font-size="34" font-weight="600">Atrium Living Wall</text>
+  </g>
+</svg>

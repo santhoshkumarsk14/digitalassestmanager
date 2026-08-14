@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import ProjectGallery from '@/components/ProjectGallery';
+import theme from '@/data/theme.json';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => entry.data);
+---
+
+<Layout
+  title="Our Projects"
+  description={`Browse the project portfolio of ${theme.siteName}, filterable by category.`}
+>
+  <section class="bg-primary text-surface">
+    <div class="mx-auto max-w-4xl px-6 py-24" data-reveal-group>
+      <p data-reveal class="font-semibold uppercase tracking-widest text-accent">Our projects</p>
+      <h1 data-reveal class="font-display mt-3 text-4xl leading-tight md:text-5xl">
+        A portfolio you can filter by what you actually need.
+      </h1>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <ProjectGallery client:load projects={projects} />
+  </section>
+</Layout>

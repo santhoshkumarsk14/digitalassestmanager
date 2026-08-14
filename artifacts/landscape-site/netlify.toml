@@ -1,0 +1,18 @@
+# In the Netlify UI, set:
+#   Base directory:    artifacts/landscape-site
+#   Build command:     pnpm --filter @workspace/landscape-site run build
+#   Publish directory: artifacts/landscape-site/dist
+# (This file's own [build] settings apply once "Base directory" above is set,
+# so paths below are relative to artifacts/landscape-site.)
+
+[build]
+  command = "pnpm install --frozen-lockfile=false && astro build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200

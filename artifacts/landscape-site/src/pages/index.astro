@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowRight, Check } from 'lucide-react';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero';
+import ProjectCard from '@/components/ProjectCard.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
+import theme from '@/data/theme.json';
+import { services } from '@/data/services';
+import { differentiators, certifications, processSteps } from '@/data/site-content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
+const testimonials = (await getCollection('testimonials')).sort((a, b) => a.data.order - b.data.order).slice(0, 2);
+---
+
+<Layout
+  title="Home"
+  description="Landscape design, build and maintenance for developers, estate managers, condo councils and homeowners."
+>
+  <Hero client:load heroImage={theme.heroImage} siteName={theme.siteName} tagline={theme.tagline} />
+
+  <section class="border-b border-ink/10 bg-white" aria-label="Why clients choose us">
+    <div class="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-4" data-reveal-group>
+      {differentiators.map((item) => (
+        <div data-reveal>
+          <p class="font-display text-2xl text-primary">{item.title}</p>
+          <p class="mt-2 text-sm leading-6 text-ink/65">{item.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="services" class="mx-auto max-w-6xl px-6 py-20">
+    <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <p class="font-semibold uppercase tracking-widest text-secondary">What we do</p>
+        <h2 class="font-display mt-2 text-3xl text-ink md:text-4xl">Nine disciplines, one accountable team</h2>
+      </div>
+      <a href="/services" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary">
+        View all services <ArrowRight size={16} />
+      </a>
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+      {services.map((service) => (
+        <a href={`/services#${service.slug}`} data-reveal class="rounded-xl border border-ink/10 bg-white p-5 transition hover:border-primary hover:shadow-md">
+          <h3 class="font-display text-lg text-ink">{service.title}</h3>
+          <p class="mt-2 text-sm leading-6 text-ink/65">{service.summary}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-primary text-surface">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p class="font-semibold uppercase tracking-widest text-accent">Featured work</p>
+          <h2 class="font-display mt-2 text-3xl md:text-4xl">Recent projects</h2>
+        </div>
+        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold text-surface hover:text-accent">
+          See the full gallery <ArrowRight size={16} />
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-group>
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            category={project.data.category}
+            location={project.data.location}
+            image={project.data.image}
+            description={project.data.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20" aria-label="Certifications">
+    <p class="font-semibold uppercase tracking-widest text-secondary">Credentials that matter on a tender</p>
+    <h2 class="font-display mt-2 max-w-xl text-3xl text-ink md:text-4xl">Registered, certified and audited — not just claimed</h2>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2" data-reveal-group>
+      {certifications.map((cert) => (
+        <div data-reveal class="flex gap-4 rounded-xl border border-ink/10 bg-white p-5">
+          <Check className="mt-0.5 shrink-0 text-accent" size={20} />
+          <div>
+            <p class="font-semibold text-ink">{cert.name}</p>
+            <p class="mt-1 text-sm leading-6 text-ink/65">{cert.context}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-secondary/10">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <p class="font-semibold uppercase tracking-widest text-secondary">Client feedback</p>
+      <h2 class="font-display mt-2 text-3xl text-ink md:text-4xl">What it's like to work with us</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2" data-reveal-group>
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.data.name}
+            role={testimonial.data.role}
+            quote={testimonial.data.quote}
+            rating={testimonial.data.rating}
+          />
+        ))}
+      </div>
+      <a href="/feedback" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary">
+        Read more feedback <ArrowRight size={16} />
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20" aria-label="Our process">
+    <p class="font-semibold uppercase tracking-widest text-secondary">How it works</p>
+    <h2 class="font-display mt-2 text-3xl text-ink md:text-4xl">From first call to first bloom</h2>
+    <div class="mt-10 grid gap-8 md:grid-cols-4" data-reveal-group>
+      {processSteps.map((step, index) => (
+        <div data-reveal class="border-t-2 border-primary pt-5">
+          <span class="font-display text-2xl text-accent">0{index + 1}</span>
+          <h3 class="font-display mt-3 text-xl text-ink">{step.title}</h3>
+          <p class="mt-2 text-sm leading-6 text-ink/65">{step.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-ink text-surface">
+    <div class="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-20 md:flex-row md:items-center md:justify-between">
+      <h2 class="font-display max-w-xl text-3xl md:text-4xl">Ready to talk about your site?</h2>
+      <a href="/get-quote" class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-ink transition hover:-translate-y-0.5">
+        Get Your Free Quote <ArrowRight size={18} />
+      </a>
+    </div>
+  </section>
+</Layout>

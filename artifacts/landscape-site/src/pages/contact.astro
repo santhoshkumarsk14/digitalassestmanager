@@ -1,0 +1,56 @@
+---
+import { Mail, MapPin, Phone } from 'lucide-react';
+import Layout from '@/layouts/Layout.astro';
+import theme from '@/data/theme.json';
+
+const mapQuery = encodeURIComponent(theme.address);
+---
+
+<Layout
+  title="Contact Us"
+  description={`Get in touch with ${theme.siteName} — phone, email, office address and business hours.`}
+>
+  <section class="bg-primary text-surface">
+    <div class="mx-auto max-w-4xl px-6 py-24" data-reveal-group>
+      <p data-reveal class="font-semibold uppercase tracking-widest text-accent">Contact us</p>
+      <h1 data-reveal class="font-display mt-3 text-4xl leading-tight md:text-5xl">Let's talk about your site.</h1>
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2">
+    <div data-reveal-group class="space-y-6">
+      <div data-reveal class="flex items-start gap-4 rounded-xl border border-ink/10 bg-white p-5">
+        <Phone className="mt-0.5 shrink-0 text-accent" size={20} />
+        <div>
+          <p class="font-semibold text-ink">Call us</p>
+          <a href={`tel:${theme.phone.replace(/[^+\d]/g, '')}`} class="text-sm text-ink/70 hover:text-primary">{theme.phone}</a>
+        </div>
+      </div>
+      <div data-reveal class="flex items-start gap-4 rounded-xl border border-ink/10 bg-white p-5">
+        <Mail className="mt-0.5 shrink-0 text-accent" size={20} />
+        <div>
+          <p class="font-semibold text-ink">Email us</p>
+          <a href={`mailto:${theme.email}`} class="text-sm text-ink/70 hover:text-primary">{theme.email}</a>
+        </div>
+      </div>
+      <div data-reveal class="flex items-start gap-4 rounded-xl border border-ink/10 bg-white p-5">
+        <MapPin className="mt-0.5 shrink-0 text-accent" size={20} />
+        <div>
+          <p class="font-semibold text-ink">Office</p>
+          <p class="text-sm text-ink/70">{theme.address}</p>
+          <p class="mt-1 text-sm text-ink/70">Mon&ndash;Fri, 9am&ndash;6pm</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl border border-ink/10">
+      <iframe
+        title="Office location map"
+        src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+        class="h-full min-h-80 w-full"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+</Layout>

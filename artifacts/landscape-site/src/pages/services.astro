@@ -1,0 +1,52 @@
+---
+import { ArrowRight } from 'lucide-react';
+import Layout from '@/layouts/Layout.astro';
+import theme from '@/data/theme.json';
+import { services } from '@/data/services';
+---
+
+<Layout
+  title="Services"
+  description={`The full range of landscape, planting and hardscape services offered by ${theme.siteName}.`}
+>
+  <section class="bg-primary text-surface">
+    <div class="mx-auto max-w-4xl px-6 py-24" data-reveal-group>
+      <p data-reveal class="font-semibold uppercase tracking-widest text-accent">Services</p>
+      <h1 data-reveal class="font-display mt-3 text-4xl leading-tight md:text-5xl">
+        Every discipline a landscape project needs, in-house.
+      </h1>
+      <p data-reveal class="mt-6 max-w-2xl text-lg text-surface/85">
+        From the first master plan to the irrigation controller nobody notices, one accountable team
+        carries each project across all nine disciplines below.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-6" data-reveal-group>
+      {services.map((service, index) => (
+        <article
+          id={service.slug}
+          data-reveal
+          class="scroll-mt-24 rounded-2xl border border-ink/10 bg-white p-6 md:p-8"
+        >
+          <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div class="flex items-start gap-5">
+              <span class="font-display text-2xl text-accent">0{index + 1}</span>
+              <div>
+                <h2 class="font-display text-2xl text-ink">{service.title}</h2>
+                <p class="mt-2 max-w-2xl text-sm leading-6 text-ink/65">{service.detail}</p>
+              </div>
+            </div>
+            <a
+              href="/get-quote"
+              class="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-surface md:self-auto"
+            >
+              Request this service <ArrowRight size={15} />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

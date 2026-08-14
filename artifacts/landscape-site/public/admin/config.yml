@@ -1,0 +1,99 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# This site lives inside a pnpm monorepo, in artifacts/landscape-site.
+# Netlify's "Base directory" must be set to artifacts/landscape-site so
+# these repo-relative content paths resolve correctly.
+
+media_folder: "public/images"
+public_folder: "/images"
+
+site_url: https://landscape-site.example.com
+display_url: https://landscape-site.example.com
+logo_url: /favicon.svg
+
+collections:
+  - name: "theme"
+    label: "Theme Settings"
+    files:
+      - name: "theme"
+        label: "Site Theme"
+        file: "src/data/theme.json"
+        fields:
+          - { label: "Site Name", name: "siteName", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "text" }
+          - { label: "Primary Color", name: "primaryColor", widget: "color" }
+          - { label: "Secondary Color", name: "secondaryColor", widget: "color" }
+          - { label: "Accent Color", name: "accentColor", widget: "color" }
+          - { label: "Surface (Background) Color", name: "surfaceColor", widget: "color" }
+          - { label: "Ink (Text) Color", name: "inkColor", widget: "color" }
+          - label: "Display Font (CSS font-family value)"
+            name: "fontDisplay"
+            widget: "string"
+            hint: "e.g. 'Fraunces', serif"
+          - label: "Body Font (CSS font-family value)"
+            name: "fontBody"
+            widget: "string"
+            hint: "e.g. 'Inter', sans-serif"
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Landscape"
+          - "Green Wall"
+          - "Planting"
+          - "Tree Pruning"
+          - "Grass Cutting"
+          - "Indoor Plants"
+          - "Turfing"
+          - "Artificial Turf"
+          - "Construction"
+          - "Maintenance"
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        default: 0
+        hint: "Lower numbers appear first."
+
+  - name: "testimonials"
+    label: "Client Feedback"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    identifier_field: "name"
+    fields:
+      - { label: "Client Name", name: "name", widget: "string" }
+      - { label: "Role / Company", name: "role", widget: "string" }
+      - { label: "Quote", name: "quote", widget: "text" }
+      - label: "Rating"
+        name: "rating"
+        widget: "number"
+        min: 1
+        max: 5
+        default: 5
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        default: 0
+        hint: "Lower numbers appear first."
